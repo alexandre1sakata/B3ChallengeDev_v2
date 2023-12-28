@@ -1,10 +1,11 @@
-# B3ChallengeDev
-Esta é uma aplicação para a candidatura de vaga como Desenvolvedor Fullstack na empresa B3.
+# B3ChallengeDev_v2
+Esta é uma aplicação para a candidatura de vaga como Desenvolvedor Fullstack na empresa B3. v2
 
 #### Nova versão: 
- - Foi migrado para o .Net Framework 4.7.2;
- - Foi inserido as validação corretas na camada do client e api;
+ - Migrado para o .Net Framework 4.7.2;
+ - Inserido as validações corretas na camada do client e api;
  - Correções e melhorias no cálculo do CDB;
+ - Testes unitários de back e front foram adaptados com as novas regras.
 
 Sistema para simular um investimento no CDB baseando no valor inicial e também em um mês para resgate, além de considerar algumas regras e incluindo cálculos de imposto.
 
@@ -33,7 +34,7 @@ Siga os seguintes passos para rodar a aplicação:
 
 ```
 
-#### Front-end - app
+#### Front-end - app client
 2. Instale as dependências
 
 ```bash

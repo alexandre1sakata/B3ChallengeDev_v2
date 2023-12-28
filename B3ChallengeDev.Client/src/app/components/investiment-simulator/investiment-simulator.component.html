@@ -1,0 +1,45 @@
+<main>
+  <div class="main-div">
+    <h4>
+        Simulador de investimento do CDB
+    </h4>
+    <div>
+      <form class="form-group" [formGroup]="formGroup" (ngSubmit)="onSubmit()" #formDir="ngForm">
+        <section class="section-input">
+          <div class="label-div">
+            <label for="initialValue">Qual valor você gostaria de investir?</label>
+            <input type="number" class="form-control" id="initialValue" placeholder="Valor inicial" formControlName="initialValue"/>
+            <small *ngIf="formDir.submitted && formGroup.get('initialValue')!.hasError('required')" class="text-danger">Valor obrigatório</small>
+            <small *ngIf="formDir.submitted && formGroup.get('initialValue')!.hasError('min')" class="text-danger">Valor precisa ser positivo</small>
+          </div>      
+          <div class="label-div">
+            <label for="rescueMonths">Quantos mêses deixaria seu dinheiro investido?</label>
+            <input type="number" class="form-control" id="rescueMonths" placeholder="Mêses para resgate" formControlName="rescueMonths"/>
+            <small *ngIf="formDir.submitted && formGroup.get('rescueMonths')!.hasError('required')" class="text-danger">Valor obrigatório</small>
+            <small *ngIf="formDir.submitted && (formGroup.get('rescueMonths')!.hasError('min') || formGroup.get('rescueMonths')!.hasError('max'))" class="text-danger">
+              Valor precisa ser entre 2 à 360 mêses
+            </small>
+          </div>      
+          <div class="btn-div">
+            <button type="submit" class="btn btn-primary">Simular</button>
+            <button type="reset" class="btn btn-secondary" (click)="onClear()">Limpar</button>
+          </div>
+        </section>
+      </form>
+    </div>
+    <div *ngIf="simulationSucess == true && cdbInvestimentReturn?.FinalValue != undefined">
+        <hr class="hr" />
+        <h6>Resultados em {{cdbInvestiment.rescueMonths}} mêses:</h6>
+        <div class="results-div">
+          <div class="results-values-div">
+            <span>Valor bruto: </span>
+            <span>R$ {{cdbInvestimentReturn.FinalValue}}</span>
+          </div>
+          <div class="results-values-div">
+            <span>Valor líquido:</span>
+            <span>R$ {{cdbInvestimentReturn.FinalValueWithTaxes}}</span>
+          </div>
+        </div>
+    </div>
+  </div>
+</main>

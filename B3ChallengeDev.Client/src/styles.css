@@ -1,0 +1,10 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+    --dark-blue: #001B74;
+    --light-blue: #4987c9;
+    --white: #ffffff;
+    --dark-grey: #1E2023;
+}

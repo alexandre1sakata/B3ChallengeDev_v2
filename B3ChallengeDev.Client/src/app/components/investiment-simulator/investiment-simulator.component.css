@@ -1,0 +1,45 @@
+main {
+    text-align: center;
+    margin: 30px;
+    border: solid;
+    border-radius: 29px;
+    border-color: var(--light-blue);
+
+    -webkit-box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.62);
+    -moz-box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.62);
+    box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.62);
+}
+
+main .main-div{
+    margin: 30px;
+}
+
+main .label-div {
+    padding: 15px;
+}
+
+main input {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+
+main .btn-div {
+    padding: 15px;
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+main .results-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .results-values-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}

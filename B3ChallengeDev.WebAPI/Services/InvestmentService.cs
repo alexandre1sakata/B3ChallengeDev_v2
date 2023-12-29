@@ -8,17 +8,17 @@ namespace B3ChallengeDev.WebAPI.Services
     {
         public InvestmentReturnsModel CalculateCDBReturns(CdbModel cdbValues)
         {
-            decimal result = cdbValues.InitialValue;
+            decimal initialValue = cdbValues.InitialValue;
             int rescueMonths = cdbValues.RescueMonths;
 
             decimal cdi = cdbValues.GetValueOfCdi();
             decimal tb = cdbValues.GetValueOfTb();
 
-            result = CalculateCdbWithFormula(result, rescueMonths, cdi, tb);
+            decimal result = CalculateCdbWithFormula(initialValue, rescueMonths, cdi, tb);
 
             decimal taxByMonth = cdbValues.GetTaxByMonth();
 
-            decimal resultWithTax = CalculateTax(result, taxByMonth);
+            decimal resultWithTax = CalculateTax(initialValue, result, taxByMonth);
 
             (decimal finalValue, decimal finalValueWithTax) = GetFinalValuesRounded(result, resultWithTax);
 
@@ -37,9 +37,11 @@ namespace B3ChallengeDev.WebAPI.Services
             return result;
         }
 
-        private decimal CalculateTax(decimal result, decimal taxesByMonth)
+        private decimal CalculateTax(decimal initialValue, decimal result, decimal taxesByMonth)
         {
-            return result * (1 - taxesByMonth);
+            var perform = result - initialValue;
+            var tax = perform * taxesByMonth;
+            return result - tax;
         }
 
         private (decimal, decimal) GetFinalValuesRounded(decimal result, decimal resultWithTax)

@@ -26,7 +26,7 @@ namespace B3ChallengeDev.WebAPI.UnitTests
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1049.55, result.FinalValue);
-            Assert.AreEqual(813.4, result.FinalValueWithTaxes);
+            Assert.AreEqual(1038.4, result.FinalValueWithTaxes);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace B3ChallengeDev.WebAPI.UnitTests
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1000, result.FinalValue);
-            Assert.AreEqual(775, result.FinalValueWithTaxes);
+            Assert.AreEqual(1000, result.FinalValueWithTaxes);
         }
 
         [Test]
@@ -75,45 +75,49 @@ namespace B3ChallengeDev.WebAPI.UnitTests
         [Test]
         public void CalculateTax_Until6Months()
         {
-            decimal result = 1500;
+            decimal initialValue = 1400;
+            decimal result = initialValue + 100;
             decimal taxByMonth = TaxCdbStruct.Until6Months;
-            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", result, taxByMonth);
+            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", initialValue, result, taxByMonth);
 
             Assert.IsNotNull(resultWithTax);
-            Assert.AreEqual(1162.500m, resultWithTax);
+            Assert.AreEqual(1477.500m, resultWithTax);
         }
 
         [Test]
         public void CalculateTax_Until12Months()
         {
-            decimal result = 1500;
+            decimal initialValue = 1400;
+            decimal result = initialValue + 100;
             decimal taxByMonth = TaxCdbStruct.Until12Months;
-            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", result, taxByMonth);
+            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", initialValue, result, taxByMonth);
 
             Assert.IsNotNull(resultWithTax);
-            Assert.AreEqual(1200.00m, resultWithTax);
+            Assert.AreEqual(1480.00m, resultWithTax);
         }
 
         [Test]
         public void CalculateTax_Until24Months()
         {
-            decimal result = 1500;
+            decimal initialValue = 1400;
+            decimal result = initialValue + 100;
             decimal taxByMonth = TaxCdbStruct.Until24Months;
-            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", result, taxByMonth);
+            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", initialValue, result, taxByMonth);
 
             Assert.IsNotNull(resultWithTax);
-            Assert.AreEqual(1237.500m, resultWithTax);
+            Assert.AreEqual(1482.500m, resultWithTax);
         }
 
         [Test]
         public void CalculateTax_MoreThan24Months()
         {
-            decimal result = 1500;
+            decimal initialValue = 1400;
+            decimal result = initialValue + 100;
             decimal taxByMonth = TaxCdbStruct.MoreThan24Months;
-            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", result, taxByMonth);
+            var resultWithTax = InvokePrivateMethod<decimal>(investmentService, "CalculateTax", initialValue, result, taxByMonth);
 
             Assert.IsNotNull(resultWithTax);
-            Assert.AreEqual(1275.00m, resultWithTax);
+            Assert.AreEqual(1485.00m, resultWithTax);
         }
 
         [Test]
